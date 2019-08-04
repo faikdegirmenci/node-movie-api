@@ -2,7 +2,7 @@
 Movie APİ
 
 # Movies
- 
+
 | Route | HTTP Verb | POST body | Description |
 | --- | --- | --- | --- |
 | /api/movies | `GET` | Empty | List all movies. |
