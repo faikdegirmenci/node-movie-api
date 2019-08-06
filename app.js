@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 const indexRouter = require('./routes/index');
 const movie = require('./routes/movie');
+const director = require('./routes/director');
 
 const app = express();
 
@@ -25,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/api/movie', movie);
-
+app.use('/api/director',director);
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
