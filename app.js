@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
-const indexRouter = require('./routes/index');
+const index = require('./routes/index');
 const movie = require('./routes/movie');
 const director = require('./routes/director');
 
@@ -13,6 +13,12 @@ const app = express();
 
 //db connection
 const db= require('./helper/db.js')(); //hem eriştik. hemde db deki keri çalıştırdık.
+// config
+const config = require('./config');
+app.set('api_secret_key', config.api_secret_key);
+
+//middleware
+const verifyToken = require('./middleware/verify-token');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,7 +30,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/', index);
+app.use('/api',verifyToken);
 app.use('/api/movie', movie);
 app.use('/api/director',director);
 // catch 404 and forward to error handler
