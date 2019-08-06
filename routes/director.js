@@ -104,4 +104,31 @@ router.get('/:director_id', (req, res) => {
     res.json(err);
   });
 });
+
+router.put('/:director_id', (req, res, next) => {
+  //res.send(req.params); localhost:3000/api/movie/sfsasda yaptığımız zaman req.params ile sfsasda yı alabiliyoruz. 
+  const promise = Director.findByIdAndUpdate(req.params.director_id, req.body, { new: true });
+  promise.then((director) => {
+    if (!director) {
+      next({ message: 'The director was not found || veya 24 harfli bir sayı giriniz!!', code: 1 });
+    }
+    res.json(director);
+  }).catch((err) => {
+    res.json(err);
+  });
+});
+
+router.delete('/:director_id', (req, res, next) => {
+  //res.send(req.params); localhost:3000/api/movie/sfsasda yaptığımız zaman req.params ile sfsasda yı alabiliyoruz. 
+  const promise = Director.findByIdAndRemove(req.params.director_id);
+  promise.then((director) => {
+    if (!director) {
+      next({ message: 'The director was not found || veya 24 harfli bir sayı giriniz!!', code: 1 });
+    }
+    res.json(director);
+  }).catch((err) => {
+    res.json(err);
+  });
+});
+
 module.exports = router;
