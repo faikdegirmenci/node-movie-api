@@ -93,7 +93,7 @@ describe('/api/movie tests', () => {
         });
     });
 
-    describe('/DELETE:director:id movie', ()=>{
+    describe('/DELETE:movie_id movie', ()=>{
         it('it should DELEETE a movie given by id',(done)=>{
            chai.request(server).delete('/api/movie/'+movieId).set('x-access-token',token).end((err,res)=>{
                res.should.have.status(200);

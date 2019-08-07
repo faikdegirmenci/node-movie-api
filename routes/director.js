@@ -53,6 +53,11 @@ router.get('/', (req, res) => {
       }
     }
   ]);
+  promise.then(data => {
+    res.json(data);
+  }).catch(err => {
+    res.json(err);
+  });
 });
 router.get('/:director_id', (req, res) => {
   const promise = Director.aggregate([
