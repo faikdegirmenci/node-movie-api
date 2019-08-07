@@ -67,7 +67,7 @@ router.delete('/:movie_id', (req, res, next) => {
     if (!movie) {
       next({ message: 'The movie was not found || veya 24 harfli bir sayı giriniz!!', code: 1 });
     }
-    res.json(movie);
+    res.json({status:1});
   }).catch((err) => {
     res.json(err);
   });
