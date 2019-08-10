@@ -1,8 +1,15 @@
 language: node_js
 node_js:
-  - 10
+  - 10.16.1
 before_install:
   - npm install
   - export NODE_ENV=production
   script:
   - npm run test
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch:gh-pages
