@@ -9,7 +9,6 @@ const index = require('./routes/index');
 const movie = require('./routes/movie');
 const director = require('./routes/director');
 
-
 const app = express();
 
 //db connection
