@@ -10,7 +10,6 @@ const movie = require('./routes/movie');
 const director = require('./routes/director');
 
 const app = express();
-
 //db connection
 const db= require('./helper/db.js')(); //hem eriştik. hemde db deki keri çalıştırdık.
 // config
