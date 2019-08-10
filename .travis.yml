@@ -4,5 +4,6 @@ node_js:
 before_install:
   - npm install
   - export NODE_ENV=production
-script:
+before_script: chmod 0777 ./node_modules/.bin/mocha
+  script:
   - npm test
